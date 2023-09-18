@@ -70,9 +70,9 @@ function App() {
                 </thead>
                 <tbody>
                     {locations.map(location => {
-                        return <tr>
+                        return <tr key={location.name}>
                             <td className="locations-item-name">{location.name}</td>
-                            <td className="locations-item-distance">{getDistance(location.coord, currentLocation)}</td>
+                            <td className="locations-item-distance">{getDistance(location.coord, currentLocation).toFixed(2)}</td>
                         </tr>
                     })}
                 </tbody>
