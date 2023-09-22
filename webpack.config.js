@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
     entry: {
         main: './src/index.tsx',
-        'manage-page': './src/manage-page.tsx',
     },
     mode: 'development',
     module: {
