@@ -1,11 +1,12 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
     entry: {
         main: './src/index.tsx',
     },
-    mode: 'production',
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     module: {
         rules: [
             {

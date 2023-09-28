@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack && tsc server.ts --esModuleInterop --outDir build && cp -a ./public/. ./build/",
-    "start": "node build/server.js"
+    "build": "NODE_ENV=production webpack && tsc server.ts --esModuleInterop --outDir build && cp -a ./public/. ./build/",
+    "start": "NODE_ENV=production node build/server.js",
+    "dev": "tsc server.ts --esModuleInterop --outDir build && cp -a ./public/. ./build/ && node build/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +22,8 @@
     "react-dom": "^18.2.0",
     "ts-loader": "^9.4.4",
     "typescript": "^5.2.2",
-    "webpack": "^5.88.2"
+    "webpack": "^5.88.2",
+    "webpack-dev-middleware": "^6.1.1"
   },
   "devDependencies": {
     "webpack-cli": "^5.1.4"
