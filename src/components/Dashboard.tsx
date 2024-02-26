@@ -1,7 +1,8 @@
 import React from 'react';
 import './Dashboard.css';
 import { Location } from '../types';
-import { Button, Page, PageHeader, Card, Table } from '@wix/design-system';
+import { Button, Page, Card, Table } from '@wix/design-system';
+import { client, navigateToSettings } from '../dashboard-sdk';
 
 const locations: Location[] = [
   {
@@ -37,7 +38,16 @@ function Dashboard() {
     <Page height="100dvh">
       <Page.Header
         title="Our Locations"
-        actionsBar={<Button>Update Locations</Button>}
+        actionsBar={
+          <Button
+            onClick={() =>
+              //   client.dashboard.showToast({ message: 'hello world!' })
+              navigateToSettings()
+            }
+          >
+            Update Locations
+          </Button>
+        }
       />
       <Page.Content>
         <Card>
