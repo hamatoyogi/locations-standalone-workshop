@@ -1,50 +1,53 @@
 import React from 'react';
 import './Dashboard.css';
 import { Location } from '../types';
+import { Button, Page, PageHeader, Card, Table } from '@wix/design-system';
 
-const locations: Location[]  = [
-    {
-        name: "Tel Aviv",
-        coord: {
-            latitude: 32.0852997,
-            longitude: 34.7818064
-        }
+const locations: Location[] = [
+  {
+    name: 'Tel Aviv',
+    coord: {
+      latitude: 32.0852997,
+      longitude: 34.7818064,
     },
-    {
-        name: "Be'er Sheva",
-        coord: {
-            latitude: 31.2457442,
-            longitude: 34.7925181
-        }
-    }
-]
+  },
+  {
+    name: "Be'er Sheva",
+    coord: {
+      latitude: 31.2457442,
+      longitude: 34.7925181,
+    },
+  },
+];
+
+const columns = [
+  {
+    title: 'Name',
+    render: (row: Location) => row.name,
+  },
+  {
+    title: 'Coords',
+    render: (row: Location) =>
+      row.coord.latitude.toFixed(2) + ', ' + row.coord.longitude.toFixed(2),
+  },
+];
 
 function Dashboard() {
-
-    return (
-        <div className="locations-container">
-            <div className="locations-header-container">
-                <h1>Our Locations</h1>
-                <button className="update-locatios-button">Update Locations</button>
-            </div>
-            <table className="locations-table">
-                <thead>
-                    <tr>
-                        <th className="locations-table-header">Name</th>
-                        <th className="locations-table-header">Coords</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {locations.map(location => {
-                        return <tr key={location.name}>
-                            <td className="locations-item-name">{location.name}</td>
-                            <td className="locations-item-name">{location.coord.latitude.toFixed(2)},{location.coord.longitude.toFixed(2)}</td>
-                        </tr>
-                    })}
-                </tbody>
-            </table>
-        </div>
-    );
+  return (
+    <Page height="100dvh">
+      <Page.Header
+        title="Our Locations"
+        actionsBar={<Button>Update Locations</Button>}
+      />
+      <Page.Content>
+        <Card>
+          <Table skin="standard" columns={columns} data={locations}>
+            <Table.Content />
+          </Table>
+        </Card>
+      </Page.Content>
+    </Page>
+  );
 }
 
 export default Dashboard;
